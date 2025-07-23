@@ -31,7 +31,7 @@ import com.example.nummatch.data.GameCard
 import com.example.nummatch.ui.theme.NumMatchTheme
 
 @Composable
-private fun GameScreen(
+fun GameScreen(
     modifier: Modifier = Modifier,
     score: Int = 0,
     timeLeft: Int = 60,
@@ -87,7 +87,7 @@ private fun GameScreen(
 @Composable
 fun GameCardView(card: GameCard, onClick: () -> Unit) {
     val backgroundColor = when {
-        card.isMatched -> Color(0xFF4CAF50) // Yeşil
+        card.isMatched -> Color(0xFF4CAF50)
         card.isRevealed -> Color.White
         else -> Color.LightGray
     }

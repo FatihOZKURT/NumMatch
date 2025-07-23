@@ -67,7 +67,9 @@ dependencies {
     // Hilt DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    implementation(libs.hilt.navigation.compose)
+
+    // Navigation
+    implementation(libs.navigation)
 
     // Kotlin Serialization
     implementation(libs.kotlinx.serialization.json)

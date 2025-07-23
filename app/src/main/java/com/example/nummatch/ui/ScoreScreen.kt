@@ -23,8 +23,8 @@ import kotlin.collections.sortedByDescending
 
 @Composable
 fun ScoreScreen(
-    modifier: Modifier = Modifier,
-    scores: List<Score>
+    scores: List<Score>,
+    modifier: Modifier = Modifier
 ) {
     val sortedScores = scores.sortedByDescending { it.score }
 
