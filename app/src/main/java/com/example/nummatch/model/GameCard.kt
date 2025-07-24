@@ -1,4 +1,4 @@
-package com.example.nummatch.data
+package com.example.nummatch.model
 
 data class GameCard(
     val number: Int,

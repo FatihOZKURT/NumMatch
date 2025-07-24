@@ -11,25 +11,30 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.nummatch.R
-import com.example.nummatch.data.Score
+import com.example.nummatch.model.Score
 import com.example.nummatch.ui.theme.NumMatchTheme
+import com.example.nummatch.viewmodel.ScoreViewModel
 import kotlin.collections.sortedByDescending
 
 @Composable
 fun ScoreScreen(
-    scores: List<Score>,
-    modifier: Modifier = Modifier
+    viewModel: ScoreViewModel = hiltViewModel()
 ) {
+    val scores by viewModel.scoreList.collectAsState()
+
     val sortedScores = scores.sortedByDescending { it.score }
 
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
@@ -41,15 +46,14 @@ fun ScoreScreen(
                 .padding(bottom = 16.dp)
         )
 
-        LazyColumn(
-            modifier = Modifier.fillMaxSize()
-        ) {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
             itemsIndexed(sortedScores) { index, score ->
                 ScoreItem(rank = index + 1, score = score)
             }
         }
     }
 }
+
 
 @Composable
 fun ScoreItem(rank: Int, score: Score) {
@@ -65,7 +69,7 @@ fun ScoreItem(rank: Int, score: Score) {
         )
 
         Text(
-            text = score.username,
+            text = score.userName,
             modifier = Modifier.weight(1f),
             style = MaterialTheme.typography.bodyLarge
         )
@@ -80,16 +84,16 @@ fun ScoreItem(rank: Int, score: Score) {
 @Preview(showBackground = true)
 @Composable
 fun ScoresScreenPreview() {
-    val sampleScores = listOf(
-        Score("Fatih", 150),
-        Score("Ayşe", 200),
-        Score("John", 120),
-        Score("Zeynep", 180)
-    )
-
-    NumMatchTheme {
-        ScoreScreen(scores = sampleScores)
-    }
+//    val sampleScores = listOf(
+//        Score("Fatih", 150),
+//        Score("Ayşe", 200),
+//        Score("John", 120),
+//        Score("Zeynep", 180)
+//    )
+//
+//    NumMatchTheme {
+//        ScoreScreen(scores = sampleScores)
+//    }
 }
 
 

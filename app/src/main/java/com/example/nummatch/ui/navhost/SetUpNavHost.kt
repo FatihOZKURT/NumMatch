@@ -4,7 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.nummatch.data.Score
+import androidx.navigation.navArgument
+import com.example.nummatch.model.Score
 import com.example.nummatch.ui.GameScreen
 import com.example.nummatch.ui.GameSetupScreen
 import com.example.nummatch.ui.MainScreen
@@ -13,7 +14,7 @@ import com.example.nummatch.ui.SettingsScreen
 import com.example.nummatch.ui.route.Screen
 
 @Composable
-fun SetupNavHost(navController: NavHostController) {
+fun NavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
         startDestination = Screen.Main.route
@@ -23,15 +24,25 @@ fun SetupNavHost(navController: NavHostController) {
         }
 
         composable(Screen.GameSetup.route) {
-            GameSetupScreen()
+            GameSetupScreen(navController = navController)
         }
 
-        composable(Screen.Game.route) {
-            GameScreen()
+        composable(
+            route = "game_screen/{username}/{difficulty}",
+            arguments = listOf(
+                navArgument("username") { defaultValue = "" },
+                navArgument("difficulty") { defaultValue = "Easy" }
+            )
+        ) { backStackEntry ->
+            val username = backStackEntry.arguments?.getString("username") ?: ""
+            val difficulty = backStackEntry.arguments?.getString("difficulty") ?: "Easy"
+            GameScreen(userName = username, difficulty = difficulty, navController = navController)
         }
+
+
 
         composable(Screen.Score.route) {
-            ScoreScreen(emptyList<Score>())
+            ScoreScreen()
         }
 
         composable(Screen.Settings.route) {

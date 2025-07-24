@@ -14,6 +14,11 @@
     <string name="back">Back</string>
     <string name="score_format">Score: %1$d</string>
     <string name="time_format">Time: %1$d s</string>
-
-
+    <string name="save_score">Save Score</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="matched_all_cards">You have matched all the cards.</string>
+    <string name="play_again">Play Again</string>
+    <string name="close">Close</string>
+    <string name="time_is_up">Time is up!</string>
+    <string name="time_expired">Unfortunately, your time has expired.</string>
 </resources>

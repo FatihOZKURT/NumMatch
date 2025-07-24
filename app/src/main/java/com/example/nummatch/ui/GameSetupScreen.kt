@@ -1,5 +1,6 @@
 package com.example.nummatch.ui
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,26 +16,29 @@ import androidx.compose.material3.MaterialTheme.shapes
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.example.nummatch.R
+import com.example.nummatch.ui.route.Screen
 import com.example.nummatch.ui.theme.NumMatchTheme
+import com.example.nummatch.viewmodel.GameSetupViewModel
 
 @Composable
 fun GameSetupScreen(
     modifier: Modifier = Modifier,
-    onStartClick: (username: String, difficulty: String) -> Unit = { _, _ -> }
+    viewModel: GameSetupViewModel = hiltViewModel(),
+    onStartClick: (username: String, difficulty: String) -> Unit = { _, _ -> },
+    navController: NavHostController
 ) {
-    var username by remember { mutableStateOf("") }
-    var selectedDifficulty by remember { mutableStateOf("Easy") }
+    val username = viewModel.username
+    val selectedDifficulty = viewModel.selectedDifficulty
 
     Column(
         modifier = modifier
@@ -46,7 +50,7 @@ fun GameSetupScreen(
         OutlinedTextField(
             value = username,
             shape = shapes.large,
-            onValueChange = { username = it },
+            onValueChange = { viewModel.onUsernameChange(it) },
             label = { Text(stringResource(R.string.enter_username)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
@@ -62,7 +66,7 @@ fun GameSetupScreen(
             val difficulties = listOf(stringResource(R.string.easy), stringResource(R.string.hard))
             difficulties.forEach { difficulty ->
                 Button(
-                    onClick = { selectedDifficulty = difficulty },
+                    onClick = { viewModel.onDifficultyChange(difficulty) },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (selectedDifficulty == difficulty) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
                         contentColor = if (selectedDifficulty == difficulty) Color.White else MaterialTheme.colorScheme.onSurface
@@ -76,7 +80,17 @@ fun GameSetupScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         Button(
-            onClick = { onStartClick(username, selectedDifficulty) },
+            onClick = {
+                if (username.isNotBlank() && selectedDifficulty.isNotBlank()) {
+                    val encodedUsername = Uri.encode(username)
+                    navController.navigate(
+                        Screen.Game.createRoute(
+                            encodedUsername,
+                            selectedDifficulty
+                        )
+                    )
+                }
+            },
             enabled = username.isNotBlank()
         ) {
             Text(stringResource(R.string.start))
@@ -88,6 +102,6 @@ fun GameSetupScreen(
 @Composable
 private fun GameSetupScreenPreview() {
     NumMatchTheme {
-        GameSetupScreen()
+        GameSetupScreen(navController = NavHostController(LocalContext.current))
     }
 }
