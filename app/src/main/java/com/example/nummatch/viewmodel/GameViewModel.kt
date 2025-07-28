@@ -11,7 +11,9 @@ import com.example.nummatch.model.GameCard
 import com.example.nummatch.model.GameResult
 import com.example.nummatch.repo.ScoreRepository
 import com.example.nummatch.room.ScoreEntity
+import com.example.nummatch.util.Difficulty
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,28 +25,40 @@ class GameViewModel @Inject constructor(
 
     var cards by mutableStateOf(listOf<GameCard>())
         private set
-
     var score by mutableIntStateOf(0)
         private set
-
     var timeLeft by mutableIntStateOf(60)
         private set
-
     private val _gameResult = mutableStateOf<GameResult>(GameResult.None)
     val gameResult: State<GameResult> = _gameResult
-
     private var revealedCards = mutableListOf<Int>()
     private var isBusy = false
+    private var timerJob: Job? = null
+    private var isTimerVisible: Boolean = true
+    private var isGameInitialized = false
 
-    init {
-        startTimer()
+    fun initializeGame(difficulty: Difficulty, isTimerVisible: Boolean) {
+        if (!isGameInitialized) {
+            setupGame(difficulty)
+            isGameInitialized = true
+        }
+        setTimerVisibility(isTimerVisible)
+        if (isTimerVisible) {
+            startTimer()
+        } else {
+            stopTimer()
+        }
     }
 
-    fun setupGame(difficulty: String) {
-        val count = if (difficulty == "Easy") 8 else 12
+    fun setupGame(difficulty: Difficulty) {
+        val count = when (difficulty) {
+            Difficulty.EASY -> 8
+            Difficulty.HARD -> 12
+        }
         val numbers = (1..100).shuffled().take(count)
         val pairedNumbers = (numbers + numbers).shuffled()
         cards = pairedNumbers.map { GameCard(it) }
+        timeLeft = 60
     }
 
     fun onCardClick(index: Int) {
@@ -65,7 +79,6 @@ class GameViewModel @Inject constructor(
             isBusy = true
 
             if (number1 == number2) {
-                // Eşleşme varsa: hemen matched yap
                 val updated = cards.toMutableList()
                 updated[i1] = updated[i1].copy(isMatched = true)
                 updated[i2] = updated[i2].copy(isMatched = true)
@@ -73,14 +86,15 @@ class GameViewModel @Inject constructor(
                 score += 10
                 revealedCards.clear()
                 isBusy = false
-
-                // 💡 Kazanma durumu kontrolü
                 if (updated.all { it.isMatched }) {
+                    if (isTimerVisible && timerJob != null) {
+                        score += timeLeft
+                    }
                     _gameResult.value = GameResult.Win
+                    stopTimer()
                 }
 
             } else {
-                // Eşleşme yoksa: 1 sn bekleyip kartları kapat
                 viewModelScope.launch {
                     delay(1000)
                     val updated = cards.toMutableList()
@@ -100,31 +114,46 @@ class GameViewModel @Inject constructor(
         }
     }
 
-    private fun startTimer() {
-        viewModelScope.launch {
+    fun startTimer() {
+        stopTimer()
+        timerJob = viewModelScope.launch {
             while (timeLeft > 0) {
                 delay(1000)
                 timeLeft--
             }
 
-            // 💡 Süre bittiğinde kaybettin
             if (_gameResult.value == GameResult.None) {
                 _gameResult.value = GameResult.Lose
             }
-
         }
     }
 
-    fun setWin() {
-        _gameResult.value = GameResult.Win
-    }
-
-    fun setLose() {
-        _gameResult.value = GameResult.Lose
+    fun stopTimer() {
+        timerJob?.cancel()
+        timerJob = null
     }
 
     fun resetResult() {
         _gameResult.value = GameResult.None
     }
 
+    fun setTimerVisibility(visible: Boolean) {
+        isTimerVisible = visible
+    }
+
+    fun restartGame(difficulty: Difficulty) {
+        _gameResult.value = GameResult.None
+        score = 0
+        revealedCards.clear()
+        isBusy = false
+        setupGame(difficulty)
+        if (isTimerVisible) {
+            startTimer()
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        stopTimer()
+    }
 }

@@ -1,12 +1,15 @@
 package com.example.nummatch.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
+import com.example.nummatch.datasource.DataStoreManager
 import com.example.nummatch.room.ScoreDao
 import com.example.nummatch.room.ScoreDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -26,4 +29,13 @@ object AppModule {
 
     @Provides
     fun provideScoreDao(db: ScoreDatabase): ScoreDao = db.scoreDao()
+
+
+    @Provides
+    @Singleton
+    fun provideDataStoreManager(@ApplicationContext context: Context): DataStoreManager {
+        return DataStoreManager(context)
+    }
+
+
 }

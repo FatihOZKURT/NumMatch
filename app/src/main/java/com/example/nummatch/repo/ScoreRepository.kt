@@ -12,9 +12,12 @@ class ScoreRepository @Inject constructor(
     private val dataSource: ScoreDataSource
 ) {
     suspend fun insertScore(score: ScoreEntity) = dataSource.insertScore(score)
+
+    suspend fun deleteAllScores() = dataSource.deleteAllScores()
+
     fun getAllScores(): Flow<List<Score>> {
         return dataSource.getAllScores().map { list ->
-            list.map { it.toScore() } // Entity → Model dönüşümü burada
+            list.map { it.toScore() }
         }
     }
 }

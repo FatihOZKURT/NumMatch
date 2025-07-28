@@ -8,8 +8,9 @@ import javax.inject.Inject
 class ScoreDataSource @Inject constructor(
     private val scoreDao: ScoreDao
 ) {
-
     suspend fun insertScore(score: ScoreEntity) = scoreDao.insert(score)
+
+    suspend fun deleteAllScores() = scoreDao.deleteAllScores()
 
     fun getAllScores(): Flow<List<ScoreEntity>> = scoreDao.getAllScores()
 

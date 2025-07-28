@@ -8,7 +8,7 @@
     <string name="scores">Scores</string>
     <string name="settings">Settings</string>
     <string name="top_scores">Top Scores</string>
-    <string name="dark_light_mode">Dark/Light Mode</string>
+    <string name="dark_light_theme">Dark/Light Theme</string>
     <string name="show_timer">Show Timer</string>
     <string name="clear_scores">Clear Scores</string>
     <string name="back">Back</string>
@@ -21,4 +21,9 @@
     <string name="close">Close</string>
     <string name="time_is_up">Time is up!</string>
     <string name="time_expired">Unfortunately, your time has expired.</string>
+    <string name="confirm">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm_clear_scores_message">Are you sure you want to clear all scores?</string>
+    <string name="scores_deleted">Scores successfully deleted</string>
+    <string name="no_scores">No scores recorded yet</string>
 </resources>

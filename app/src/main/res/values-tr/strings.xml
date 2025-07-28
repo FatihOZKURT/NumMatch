@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NumMatch</string>
+    <string name="enter_username">Kullanıcı Adı Giriniz</string>
+    <string name="easy">Kolay</string>
+    <string name="hard">Zor</string>
+    <string name="start">Başla</string>
+    <string name="create_game">Oyun Kur</string>
+    <string name="scores">Skorlar</string>
+    <string name="settings">Ayarlar</string>
+    <string name="top_scores">En Yüksek Skorlar</string>
+    <string name="dark_light_theme">Koyu/Açık Tema</string>
+    <string name="show_timer">Zamanlayıcıyı Göster</string>
+    <string name="clear_scores">Skorları Temizle</string>
+    <string name="back">Geri</string>
+    <string name="score_format">Skor: %1$d</string>
+    <string name="time_format">Süre: %1$d sn</string>
+    <string name="save_score">Skoru Kaydet</string>
+    <string name="congratulations">Tebrikler!</string>
+    <string name="matched_all_cards">Tüm kartları eşleştirdiniz.</string>
+    <string name="play_again">Tekrar Oyna</string>
+    <string name="close">Kapat</string>
+    <string name="time_is_up">Süre doldu!</string>
+    <string name="time_expired">Maalesef süreniz doldu.</string>
+    <string name="confirm">Evet</string>
+    <string name="cancel">İptal</string>
+    <string name="confirm_clear_scores_message">Tüm skorları silmek istediğinize emin misiniz?</string>
+    <string name="scores_deleted">Skorlar başarıyla silindi</string>
+    <string name="no_scores">Henüz kayıtlı bir skor yok</string>
+</resources>

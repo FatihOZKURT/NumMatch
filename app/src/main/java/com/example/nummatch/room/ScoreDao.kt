@@ -12,7 +12,11 @@ interface ScoreDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(score: ScoreEntity)
 
+    @Query("DELETE FROM score_table")
+    suspend fun deleteAllScores()
+
     @Query("SELECT * FROM score_table ORDER BY score DESC")
     fun getAllScores(): Flow<List<ScoreEntity>>
+
 
 }
