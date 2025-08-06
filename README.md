@@ -32,13 +32,17 @@ NumMatch is an Android number matching game built with Jetpack Compose, where pl
 
 ## 📷 Screenshots
 
-<img src="https://github.com/FatihOZKURT/NumMatch/blob/master/screenshots/GameScreen.png" width="250" />
-<img src="https://github.com/FatihOZKURT/NumMatch/blob/master/screenshots/ScoreScreen.png" width="250" />
-<img src="https://github.com/FatihOZKURT/NumMatch/blob/master/screenshots/SettingsScreen.png" width="250" />
+<div align="center">
+  <img src="https://github.com/FatihOZKURT/NumMatch/blob/master/screenshots/GameScreen.png" width="250" />
+  &nbsp; &nbsp; 
+  <img src="https://github.com/FatihOZKURT/NumMatch/blob/master/screenshots/ScoreScreen.png" width="250" />
+  &nbsp; &nbsp; 
+  <img src="https://github.com/FatihOZKURT/NumMatch/blob/master/screenshots/SettingsScreen.png" width="250" />
+</div>
 
 ## 🎥 Gameplay Demo
 
-[Watch Gameplay Demo](https://github.com/FatihOZKURT/NumMatch/blob/master/screenshots/video.mp4)
+[Watch Gameplay Demo](https://github.com/user-attachments/assets/64decf58-9853-4772-a1e8-1b79f5798039)
 
 ## 📂 Package Structure
  ```bash
