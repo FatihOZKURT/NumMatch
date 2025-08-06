@@ -90,4 +90,7 @@ dependencies {
     // DataStore
     implementation(libs.datastore.preferences)
 
+    // Icons (Extended)
+    implementation(libs.material.icons.extended)
+
 }

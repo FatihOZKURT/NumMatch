@@ -1,4 +1,4 @@
-package com.example.nummatch.ui.theme
+package com.example.nummatch.presentation.theme
 
 
 import android.os.Build
@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 private val DarkColorScheme = darkColorScheme(
     primary = ButtonBackground,
     secondary = SecondaryColor,
-    tertiary = Pink40,
+    tertiary = TextDark,
     background = GameBackground,
     surface = CardBackground,
     onPrimary = Color.White,
@@ -28,7 +28,7 @@ private val DarkColorScheme = darkColorScheme(
 private val LightColorScheme = lightColorScheme(
     primary = ButtonBackground,
     secondary = PurpleGrey40,
-    tertiary = Pink40,
+    tertiary = TextLight,
     background = GameBackgroundLight,
     surface = CardBackground,
     onPrimary = Color.White,

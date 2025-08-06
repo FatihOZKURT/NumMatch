@@ -9,7 +9,7 @@
     <string name="scores">Skorlar</string>
     <string name="settings">Ayarlar</string>
     <string name="top_scores">En Yüksek Skorlar</string>
-    <string name="dark_light_theme">Koyu/Açık Tema</string>
+    <string name="light_dark_theme">Açık/Koyu Tema</string>
     <string name="show_timer">Zamanlayıcıyı Göster</string>
     <string name="clear_scores">Skorları Temizle</string>
     <string name="back">Geri</string>
@@ -27,4 +27,33 @@
     <string name="confirm_clear_scores_message">Tüm skorları silmek istediğinize emin misiniz?</string>
     <string name="scores_deleted">Skorlar başarıyla silindi</string>
     <string name="no_scores">Henüz kayıtlı bir skor yok</string>
+    <string name="statistics">İstatistikler</string>
+    <string name="total_games">Toplam Oyun Sayısı</string>
+    <string name="average">Ortalama</string>
+    <string name="best_score">En Yüksek Skor</string>
+    <string name="no_results_found">Hiçbir sonuç bulunamadı</string>
+    <string name="try_adjusting_your_filters">Filtreleri değiştirerek tekrar deneyin</string>
+    <string name="dismiss">Kapat</string>
+    <string name="retry">Yeniden Dene</string>
+    <string name="error_loading_scores">Skorlar yüklenemedi</string>
+    <string name="first_place">Birinci sıra</string>
+    <string name="second_place">İkinci sıra</string>
+    <string name="third_place">Üçüncü sıra</string>
+    <string name="match_and_win">Eşleştir ve Kazan!</string>
+    <string name="recent_players">Son oyuncular:</string>
+    <string name="select_difficulty">Zorluk Seviyesini Seçin</string>
+    <string name="_8_pairs">8 çift</string>
+    <string name="_12_pairs">12 çift</string>
+    <string name="loading">Yükleniyor…</string>
+    <string name="card_back">Kartın Arka Yüzü</string>
+    <string name="card_front">Kartın Ön Yüzü</string>
+    <string name="card_flip">Kart Çevirme</string>
+    <string name="scale">Ölçek</string>
+    <string name="bounce">Sekme</string>
+    <string name="infinite">Sonsuz</string>
+    <string name="starting">Başlatılıyor…</string>
+    <string name="button_scale">Buton Ölçek</string>
+    <string name="button_color">Buton Rengi</string>
+    <string name="clear_username">Kullanıcı Adını Temizle</string>
+
 </resources>

@@ -1,6 +1,5 @@
 package com.example.nummatch.di
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.example.nummatch.datasource.DataStoreManager
@@ -19,23 +18,20 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Application): ScoreDatabase =
+    fun provideDatabase(@ApplicationContext app: Context): ScoreDatabase =
         Room.databaseBuilder(
             app,
             ScoreDatabase::class.java,
             "score_db"
         ).build()
 
-
     @Provides
+    @Singleton
     fun provideScoreDao(db: ScoreDatabase): ScoreDao = db.scoreDao()
-
 
     @Provides
     @Singleton
     fun provideDataStoreManager(@ApplicationContext context: Context): DataStoreManager {
         return DataStoreManager(context)
     }
-
-
 }

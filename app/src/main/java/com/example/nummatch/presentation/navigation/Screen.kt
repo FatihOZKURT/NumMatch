@@ -1,4 +1,4 @@
-package com.example.nummatch.ui.route
+package com.example.nummatch.presentation.navigation
 
 sealed class Screen(val route: String) {
 
