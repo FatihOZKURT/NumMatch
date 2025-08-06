@@ -40,10 +40,6 @@ NumMatch is an Android number matching game built with Jetpack Compose, where pl
   <img src="https://github.com/FatihOZKURT/NumMatch/blob/master/screenshots/SettingsScreen.png" width="250" />
 </div>
 
-## 🎥 Gameplay Demo
-
-[Watch Gameplay Demo](https://github.com/user-attachments/assets/64decf58-9853-4772-a1e8-1b79f5798039)
-
 ## 📂 Package Structure
  ```bash
 com.example.nummatch
@@ -51,15 +47,13 @@ com.example.nummatch
 ├── datasource        # Data sources
 ├── di                # Dependency injection
 ├── model             # Data models
-├── repo              # Repository implementations
-├── room              # Room database
-├── ui                
-│   ├── navhost       # Navigation host setup
-│   ├── route         # Screen routes   
+├── presentation                
+│   ├── navigation    # Navigation setup
 │   ├── screen        # UI screens
 │   └── theme         # App theme and styles
-├── util              # Utility classes
-└── viewmodel         # ViewModel classes for UI logic
+├── repo              # Repository implementations
+├── room              # Room database
+└── util              # Utility classes
 ```
 
 
