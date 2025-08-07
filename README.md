@@ -44,16 +44,25 @@ NumMatch is an Android number matching game built with Jetpack Compose, where pl
  ```bash
 com.example.nummatch
 │
-├── datasource        # Data sources
-├── di                # Dependency injection
-├── model             # Data models
+├── data
+│   ├── datastore     # DataStore preferences management
+│   ├── local         # Room database setup
+│   ├── repository    # Repository implementations
+│   └── source        # Data sources
+├── di                # Dependency injection modules
+├── domain
+│   ├── model         # Domain models
+│   └── repository    # Repository interfaces
 ├── presentation                
 │   ├── navigation    # Navigation setup
 │   ├── screen        # UI screens
+│   │   ├── game      # Game screen
+│   │   ├── gamesetup # Game setup screen
+│   │   ├── main      # Main screen
+│   │   ├── score     # Score screen
+│   │   └── settings  # Settings screen
 │   └── theme         # App theme and styles
-├── repo              # Repository implementations
-├── room              # Room database
-└── util              # Utility classes
+└── util              # Utility classes and extensions
 ```
 
 
