@@ -1,4 +1,4 @@
-package com.example.nummatch.model
+package com.example.nummatch.domain.model
 
 sealed class GameResult {
     object Win : GameResult()

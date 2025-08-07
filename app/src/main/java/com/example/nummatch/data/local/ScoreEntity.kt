@@ -1,8 +1,8 @@
-package com.example.nummatch.room
+package com.example.nummatch.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.nummatch.model.Score
+import com.example.nummatch.domain.model.Score
 
 @Entity(tableName = "score_table")
 data class ScoreEntity(

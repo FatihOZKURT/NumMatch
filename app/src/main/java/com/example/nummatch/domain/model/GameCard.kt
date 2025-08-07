@@ -1,4 +1,4 @@
-package com.example.nummatch.model
+package com.example.nummatch.domain.model
 
 data class GameCard(
     val number: Int,

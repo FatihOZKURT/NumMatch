@@ -39,8 +39,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.nummatch.R
-import com.example.nummatch.model.GameCard
-import com.example.nummatch.model.GameResult
+import com.example.nummatch.domain.model.GameCard
+import com.example.nummatch.domain.model.GameResult
 import com.example.nummatch.presentation.theme.EnableButtonBackground
 import com.example.nummatch.util.Difficulty
 import com.example.nummatch.presentation.screen.settings.SettingsViewModel

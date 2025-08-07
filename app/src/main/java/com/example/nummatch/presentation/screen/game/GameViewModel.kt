@@ -2,10 +2,10 @@ package com.example.nummatch.presentation.screen.game
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nummatch.model.GameCard
-import com.example.nummatch.model.GameResult
-import com.example.nummatch.repo.GameRepository
-import com.example.nummatch.room.ScoreEntity
+import com.example.nummatch.domain.model.GameCard
+import com.example.nummatch.domain.model.GameResult
+import com.example.nummatch.domain.repository.GameRepository
+import com.example.nummatch.data.local.ScoreEntity
 import com.example.nummatch.util.Difficulty
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job

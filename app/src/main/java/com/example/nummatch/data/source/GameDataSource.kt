@@ -1,7 +1,8 @@
-package com.example.nummatch.datasource
+package com.example.nummatch.data.source
 
-import com.example.nummatch.room.ScoreDao
-import com.example.nummatch.room.ScoreEntity
+import com.example.nummatch.data.datastore.DataStoreManager
+import com.example.nummatch.data.local.ScoreDao
+import com.example.nummatch.data.local.ScoreEntity
 import com.example.nummatch.util.Difficulty
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

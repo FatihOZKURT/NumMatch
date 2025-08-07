@@ -2,7 +2,7 @@ package com.example.nummatch.presentation.screen.score
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nummatch.repo.GameRepository
+import com.example.nummatch.domain.repository.GameRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

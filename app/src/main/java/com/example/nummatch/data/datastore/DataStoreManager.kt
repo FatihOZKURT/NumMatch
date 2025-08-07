@@ -1,4 +1,4 @@
-package com.example.nummatch.datasource
+package com.example.nummatch.data.datastore
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -7,10 +7,10 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.nummatch.datasource.DataStoreManager.PreferencesKeys.DARK_THEME_KEY
-import com.example.nummatch.datasource.DataStoreManager.PreferencesKeys.LAST_DIFFICULTY_KEY
-import com.example.nummatch.datasource.DataStoreManager.PreferencesKeys.RECENT_USERNAMES_KEY
-import com.example.nummatch.datasource.DataStoreManager.PreferencesKeys.TIMER_VISIBLE_KEY
+import com.example.nummatch.data.datastore.DataStoreManager.PreferencesKeys.DARK_THEME_KEY
+import com.example.nummatch.data.datastore.DataStoreManager.PreferencesKeys.LAST_DIFFICULTY_KEY
+import com.example.nummatch.data.datastore.DataStoreManager.PreferencesKeys.RECENT_USERNAMES_KEY
+import com.example.nummatch.data.datastore.DataStoreManager.PreferencesKeys.TIMER_VISIBLE_KEY
 import com.example.nummatch.util.Difficulty
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow

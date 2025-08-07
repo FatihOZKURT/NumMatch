@@ -1,6 +1,6 @@
 package com.example.nummatch.presentation.screen.score
 
-import com.example.nummatch.model.Score
+import com.example.nummatch.domain.model.Score
 import kotlin.collections.filter
 import kotlin.collections.isNotEmpty
 import kotlin.collections.map

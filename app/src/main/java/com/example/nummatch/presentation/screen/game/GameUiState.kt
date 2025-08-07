@@ -1,7 +1,7 @@
 package com.example.nummatch.presentation.screen.game
 
-import com.example.nummatch.model.GameCard
-import com.example.nummatch.model.GameResult
+import com.example.nummatch.domain.model.GameCard
+import com.example.nummatch.domain.model.GameResult
 import com.example.nummatch.util.Difficulty
 
 data class GameUiState(

@@ -1,4 +1,4 @@
-package com.example.nummatch.room
+package com.example.nummatch.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

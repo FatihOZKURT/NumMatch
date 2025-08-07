@@ -38,7 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.nummatch.R
-import com.example.nummatch.model.Score
+import com.example.nummatch.domain.model.Score
 import com.example.nummatch.presentation.theme.Bronze
 import com.example.nummatch.presentation.theme.FirstScore
 import com.example.nummatch.presentation.theme.Gold
