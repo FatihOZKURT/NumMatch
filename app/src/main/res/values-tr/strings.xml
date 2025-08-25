@@ -26,7 +26,6 @@
     <string name="cancel">İptal</string>
     <string name="confirm_clear_scores_message">Tüm skorları silmek istediğinize emin misiniz?</string>
     <string name="scores_deleted">Skorlar başarıyla silindi</string>
-    <string name="no_scores">Henüz kayıtlı bir skor yok</string>
     <string name="statistics">İstatistikler</string>
     <string name="total_games">Toplam Oyun Sayısı</string>
     <string name="average">Ortalama</string>
@@ -55,5 +54,15 @@
     <string name="button_scale">Buton Ölçek</string>
     <string name="button_color">Buton Rengi</string>
     <string name="clear_username">Kullanıcı Adını Temizle</string>
-
+    <string name="loading_scores">Skorlar yükleniyor…</string>
+    <string name="error_occurred">Bir hata oluştu</string>
+    <string name="ok">Tamam</string>
+    <string name="no_scores_yet">Henüz Skor Yok</string>
+    <string name="no_scores_message">Henüz hiç oyun oynamadınız</string>
+    <string name="play_first_game">Skorlarınızı görmek için ilk oyununuzu oynayın</string>
+    <string name="start_playing">Oynamaya Başla</string>
+    <string name="no_results_for_query">\"%1$s\" için sonuç bulunamadı</string>
+    <string name="no_results_message">Eşleşen sonuç bulunamadı</string>
+    <string name="try_different_search">Arama veya filtrelerinizi ayarlamayı deneyin</string>
+    <string name="clear_filters">Filtreleri Temizle</string>
 </resources>

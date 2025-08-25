@@ -1,27 +1,17 @@
 package com.example.nummatch.presentation.screen.settings
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -31,10 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.nummatch.R
-import com.example.nummatch.presentation.theme.EnableButtonBackground
+import com.example.nummatch.presentation.component.dialog.DeleteConfirmDialog
+import com.example.nummatch.presentation.component.header.ScreenHeader
+import com.example.nummatch.presentation.component.state.SmallLoadingIndicator
+import com.example.nummatch.presentation.theme.NumMatchTheme
 import com.example.nummatch.presentation.theme.RowBackground
 import com.example.nummatch.util.showShortToast
 
@@ -53,6 +47,7 @@ fun SettingsScreen(
                 is DeleteScoresResult.Success -> {
                     context.showShortToast(context.getString(R.string.scores_deleted))
                 }
+
                 is DeleteScoresResult.Error -> {
                     context.showShortToast(result.message)
                 }
@@ -62,7 +57,8 @@ fun SettingsScreen(
     }
 
     if (uiState.showDeleteDialog) {
-        DeleteScoresDialog(
+        DeleteConfirmDialog(
+            itemName = "scores",
             onConfirm = { viewModel.onEvent(SettingsEvent.DeleteScores) },
             onDismiss = { viewModel.onEvent(SettingsEvent.HideDeleteDialog) }
         )
@@ -87,7 +83,10 @@ private fun SettingsContent(
         modifier = modifier.padding(horizontal = 16.dp)
     ) {
         // Header
-        SettingsHeader(onBackClick = onBackClick)
+        ScreenHeader(
+            title = stringResource(R.string.settings),
+            onBackClick = onBackClick
+        )
 
         Spacer(modifier = Modifier.height(32.dp))
 
@@ -113,10 +112,7 @@ private fun SettingsContent(
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             if (uiState.isLoading) {
-                CircularProgressIndicator(
-                    modifier = Modifier.size(16.dp),
-                    strokeWidth = 2.dp
-                )
+                SmallLoadingIndicator()
                 Spacer(modifier = Modifier.width(8.dp))
             }
             Text(
@@ -127,32 +123,6 @@ private fun SettingsContent(
                 }
             )
         }
-    }
-}
-
-@Composable
-private fun SettingsHeader(
-    onBackClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = modifier.fillMaxWidth()
-    ) {
-        IconButton(
-            onClick = onBackClick,
-            modifier = Modifier.align(Alignment.CenterStart)
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = stringResource(R.string.back)
-            )
-        }
-
-        Text(
-            text = stringResource(R.string.settings),
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.align(Alignment.Center)
-        )
     }
 }
 
@@ -183,31 +153,3 @@ private fun SettingsOption(
     }
 }
 
-@Composable
-private fun DeleteScoresDialog(
-    onConfirm: () -> Unit,
-    onDismiss: () -> Unit
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        confirmButton = {
-            TextButton(onClick = onConfirm) {
-                Text(stringResource(R.string.confirm))
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.cancel))
-            }
-        },
-        title = {
-            Text(
-                text = stringResource(R.string.clear_scores),
-                color = EnableButtonBackground
-            )
-        },
-        text = {
-            Text(stringResource(R.string.confirm_clear_scores_message))
-        }
-    )
-}

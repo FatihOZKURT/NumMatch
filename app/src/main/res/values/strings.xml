@@ -25,7 +25,6 @@
     <string name="cancel">Cancel</string>
     <string name="confirm_clear_scores_message">Are you sure you want to clear all scores?</string>
     <string name="scores_deleted">Scores successfully deleted</string>
-    <string name="no_scores">No scores recorded yet</string>
     <string name="statistics">Statistics</string>
     <string name="total_games">Total Games</string>
     <string name="average">Average</string>
@@ -54,5 +53,15 @@
     <string name="button_scale">button_scale</string>
     <string name="button_color">button_color</string>
     <string name="clear_username">Clear username</string>
-
+    <string name="loading_scores">Loading scores…</string>
+    <string name="error_occurred">An error occurred</string>
+    <string name="ok">OK</string>
+    <string name="no_scores_yet">No Scores Yet</string>
+    <string name="no_scores_message">You haven\'t played any games yet</string>
+    <string name="play_first_game">Play your first game to see your scores here</string>
+    <string name="start_playing">Start Playing</string>
+    <string name="no_results_for_query">No results found for \"%1$s\"</string>
+    <string name="no_results_message">No matching results found</string>
+    <string name="try_different_search">Try adjusting your search or filters</string>
+    <string name="clear_filters">Clear Filters</string>
 </resources>

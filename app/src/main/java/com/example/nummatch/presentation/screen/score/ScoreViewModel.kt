@@ -57,13 +57,22 @@ class ScoreViewModel @Inject constructor(
         }
     }
 
-
     fun refreshScores() {
         loadScores()
     }
 
     fun clearError() {
         updateUiState { it.copy(error = null) }
+    }
+
+    fun clearFilters() {
+        updateUiState {
+            it.copy(
+                searchQuery = "",
+                filterBy = ScoreFilter.ALL,
+                sortOrder = SortOrder.HIGHEST_FIRST
+            )
+        }
     }
 
     private fun updateUiState(update: (ScoreUiState) -> ScoreUiState) {

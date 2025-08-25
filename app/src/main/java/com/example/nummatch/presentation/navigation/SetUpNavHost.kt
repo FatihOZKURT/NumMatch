@@ -48,12 +48,14 @@ fun NumMatchNavigation(
         }
 
         composable(Screen.Score.route) {
-            ScoreScreen(onBackClick = {
-                navController.navigate(Screen.Main.route) {
-                    popUpTo(Screen.Main.route) { inclusive = false }
-                    launchSingleTop = true
-                }
-            })
+            ScoreScreen(
+                navController = navController,
+                onBackClick = {
+                    navController.navigate(Screen.Main.route) {
+                        popUpTo(Screen.Main.route) { inclusive = false }
+                        launchSingleTop = true
+                    }
+                })
         }
 
         composable(Screen.Settings.route) {
