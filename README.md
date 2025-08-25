@@ -53,7 +53,8 @@ com.example.nummatch
 ├── domain
 │   ├── model         # Domain models
 │   └── repository    # Repository interfaces
-├── presentation                
+├── presentation    
+│   ├── component     # UI Components
 │   ├── navigation    # Navigation setup
 │   ├── screen        # UI screens
 │   │   ├── game      # Game screen
