@@ -46,7 +46,7 @@ fun GameScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = if (uiState.cards.size == 24) 8.dp else 16.dp)
     ) {
         // Header: Score and Time
         GameHeader(
@@ -56,7 +56,7 @@ fun GameScreen(
             progress = uiState.progress
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(if (uiState.cards.size == 24) 8.dp else 16.dp))
 
         // Game Cards
         GameBoard(
@@ -87,15 +87,26 @@ private fun GameBoard(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        val columnCount = if (cards.size == 16) 4 else 6
+        val columnCount = when {
+            cards.size <= 16 -> 4
+            cards.size == 20 -> 5
+            cards.size == 24 -> 4
+            else -> 6
+        }
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(columnCount),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier
-                .fillMaxWidth(0.95f)
-                .aspectRatio(1f)
+                .fillMaxWidth(if (cards.size == 24) 0.98f else 0.95f)
+                .aspectRatio(
+                    when {
+                        cards.size == 16 -> 1f
+                        cards.size == 24 -> 0.65f
+                        else -> 1f
+                    }
+                )
         ) {
             items(cards.size) { index ->
                 GameCard(
